@@ -28,8 +28,6 @@ var BoothBuilder = {
 					name: filename
 				});
 		});
-		//TODO: push into DOM
-		//theDOM.append()
 	},
 	setupForegrounds: function(){
 		var $fgGalleries = jQuery("ul#foregroundImages");//get the 5th
@@ -64,7 +62,7 @@ var BoothBuilder = {
 		});
 
 	},
-	//Build the dang thing, init events
+	//build accordions
 	rigDOM: function(){
 		
 		//append bg
@@ -109,7 +107,10 @@ var BoothBuilder = {
 			}
 			$(this).parent().data("selected-count", selectedCount);
 			//$(this).siblings().removeClass("selected");
-			$(this).toggleClass("selected");
+			$(this).toggleClass("selected").promise().done(function(){
+			    $(this).trigger("selected");
+				BoothBuilder.writeUrl();
+			});
 
 			//maxed out selection
 			
@@ -119,28 +120,123 @@ var BoothBuilder = {
 				$(this).parent().removeClass("selectComplete");
 			}
 
-			$(this).parent().trigger("selected");
+			//$(this).parent().trigger("selected");
 		});
 
-		$("#bgSelect").on("selected", function(e){
-			selectedBG = $(this).find("img.selected")[0];
+		$("#bgSelect img").on("selected", function(e){
+			
 			//set label
-			$(this).parent().find("[aria-controls='bgSelect']").find(".header-label").text(selectedBG.title);
-			$("#viewport .selectedBG").css('background-image', 'url(' + selectedBG.src + ')').show();
+			if($(this).hasClass("selected")){
+				$(this).siblings().removeClass("selected");
+				$(this).parent().addClass("selectComplete");
+				$(this).parent().parent().find("[aria-controls='bgSelect']").find(".header-label").text( $(this).attr("title") );
+				$("#viewport .selectedBG").attr("src", $(this).attr("src")).fadeIn();
+
+				BoothBuilder.openNextAccordion();
+			}else{
+				//unselect
+				$(this).parent().removeClass("selectComplete");
+				$(this).parent().parent().find("[aria-controls='bgSelect']").find(".header-label").text("Pick One!");
+				//animate this
+				//$("#viewport .selectedBG").fadeOut();
+				$("#viewport .selectedBG").fadeOut();
+			
+			}
+
 		});
-		$("#fgSelect").on("selected", function(e){
-			selectedFG = $(this).find("img.selected")[0];
-			//set label
-			$(this).parent().find("[aria-controls='fgSelect']").find(".header-label").text(selectedFG.title);
-			$("#viewport .selectedFG").css('background-image', 'url(' + selectedFG.src + ')').show();
+		$("#fgSelect img").on("selected", function(e){
+
+			if($(this).hasClass("selected")){
+				//set label
+				$(this).siblings().removeClass("selected");
+				$(this).parent().addClass("selectComplete");
+				$(this).parent().parent().find("[aria-controls='fgSelect']").find(".header-label").text( $(this).attr("title") );
+				$("#viewport .selectedFG").attr("src", $(this).attr("src") ).fadeIn();
+
+				//warning text
+				if(!$("#viewport .selectedBG").is(':visible')){
+					$("#introText").hide();
+					$("#pleaseSelectText").fadeIn();
+				}else{
+					$("#pleaseSelectText").fadeOut();
+				}
+
+				//BoothBuilder.openNextAccordion();
+			}else{
+				//unselect
+				$(this).parent().removeClass("selectComplete");
+				$(this).parent().parent().find("[aria-controls='fgSelect']").find(".header-label").text("Pick Any!");
+				//animate this
+				$("#viewport .selectedFG").fadeOut();
+
+				//warning text
+				if(!$("#viewport .selectedBG").is(':visible')){
+					$("#pleaseSelectText").hide();
+					$("#introText").fadeIn();
+				}
+			}
+
 		});
-		$("#propSelect").on("selected", function(e){
+		$("#propSelect img").on("selected", function(e){
+			selectedPropImgs = $(this).parent().find("img.selected");
+
+			$("#viewport .selectedProps").empty();
+			if(selectedPropImgs){
+
+				selectedPropImgs.toArray().forEach(function(img, idx){
+					img = $(img);
+					$('<img />', {
+					    src: img.attr("src"),
+					    title: img.attr("title"),
+					    index: idx
+					}).data("index", idx).appendTo( $("#viewport .selectedProps") );
+				});
+				if(selectedPropImgs.length>=10){
+					$(this).parent().addClass("selectComplete");
+				}
+			}
+
+			//warning text if needed
+			if(!$("#viewport .selectedBG").is(':visible')){
+				$("#introText").hide();
+				$("#pleaseSelectText").fadeIn();
+			}else{
+
+			}
 
 		});
 	},
 	extractCleanName: function(imgUrl){
 		//damn this ugly
 		return imgUrl.substring(imgUrl.lastIndexOf("/")+1).replace("-"," ").replace(".jpg","");
+	},
+	writeUrl: function(){
+		var bgIdx = $("#bgSelect").find("img.selected").index();
+		var fgIdx = $("#fgSelect").find("img.selected").index();
+		var props = $("#propSelect").find("img.selected");
+		var propIdx = "";
+		props.toArray().forEach(function(img, idx){
+			propIdx+= $(img).index()+",";
+		});
+		var params = {
+			bg: bgIdx,
+			fg: fgIdx,
+			prop: propIdx
+		}
+		//alert(jQuery.param(params));
+		//alert($(location).attr('search'));
+        
+        var baseUrl = [location.protocol, '//', location.host, location.pathname].join('');
+		//window.history.replaceState(params, "Booth Builder", baseUrl + jQuery.param(params));
+	},
+	openNextAccordion: function(){
+		var $accordion = $( "#selectAccordion" );
+
+	    var current = $accordion.accordion("option","active"),
+	        maximum = $accordion.find("h3").length,
+	        next = current+1 === maximum ? 0 : current+1;
+	    // $accordion.accordion("activate",next); // pre jQuery UI 1.10
+	    $accordion.accordion("option","active",next);
 	}
 };
 
