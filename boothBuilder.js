@@ -21,11 +21,13 @@ var BoothBuilder = {
 		$bgGalleries.find("li a").each( function(){
 			var imgUrl   = $(this).attr("href");
 			var filename = BoothBuilder.extractCleanName(imgUrl);
+			var bigUrl	 = $(this).data("big");
 
 			BoothBuilder.theBGimgs.push(
 				{
 					url: imgUrl,
-					name: filename
+					name: filename,
+					big: bigUrl
 				});
 		});
 	},
@@ -36,11 +38,13 @@ var BoothBuilder = {
 			$(this).find("li a").each( function(){
 				var imgUrl   = $(this).attr("href");
 				var filename = BoothBuilder.extractCleanName(imgUrl);
+				var bigUrl	 = $(this).data("big");
 
 				BoothBuilder.theFGimgs.push(
 					{
 						url: imgUrl,
-						name: filename
+						name: filename,
+						big: bigUrl
 					});
 			});
 		});
@@ -52,11 +56,13 @@ var BoothBuilder = {
 			$(this).find("li a").each( function(){
 				var imgUrl   = $(this).attr("href");
 				var filename = BoothBuilder.extractCleanName(imgUrl);
+				var bigUrl	 = $(this).data("big");
 
 				BoothBuilder.thePropimgs.push(
 					{
 						url: imgUrl,
-						name: filename
+						name: filename,
+						big: bigUrl
 					});
 			});
 		});
@@ -70,7 +76,7 @@ var BoothBuilder = {
 			$('<img />', {
 			    src: img.url,
 			    title: img.name
-			}).data("index", idx).appendTo($("#bgSelect"));
+			}).attr("data-big", img.big).appendTo($("#bgSelect"));
 		});
 
 		//append fg
@@ -79,7 +85,7 @@ var BoothBuilder = {
 			    src: img.url,
 			    title: img.name,
 			    index: idx
-			}).data("index", idx).appendTo($("#fgSelect"));
+			}).attr("data-big", img.big).appendTo($("#fgSelect"));
 		});
 
 		//append prop
@@ -88,7 +94,7 @@ var BoothBuilder = {
 			    src: img.url,
 			    title: img.name,
 			    index: idx
-			}).data("index", idx).appendTo($("#propSelect"));
+			}).attr("data-big", img.big).appendTo($("#propSelect"));
 		});
 
 		$( "#selectAccordion" ).accordion();
@@ -130,9 +136,9 @@ var BoothBuilder = {
 				$(this).siblings().removeClass("selected");
 				$(this).parent().addClass("selectComplete");
 				$(this).parent().parent().find("[aria-controls='bgSelect']").find(".header-label").text( $(this).attr("title") );
-				$("#viewport .selectedBG").attr("src", $(this).attr("src")).fadeIn();
+				$("#viewport .selectedBG").css('background-image', 'url("' + $(this).data("big") + '")').fadeIn();
 
-				BoothBuilder.openNextAccordion();
+				//BoothBuilder.openNextAccordion();
 			}else{
 				//unselect
 				$(this).parent().removeClass("selectComplete");
@@ -151,7 +157,7 @@ var BoothBuilder = {
 				$(this).siblings().removeClass("selected");
 				$(this).parent().addClass("selectComplete");
 				$(this).parent().parent().find("[aria-controls='fgSelect']").find(".header-label").text( $(this).attr("title") );
-				$("#viewport .selectedFG").attr("src", $(this).attr("src") ).fadeIn();
+				$("#viewport .selectedFG").css("backgroundImage", "url("+$(this).data("big")+")" ).fadeIn();
 
 				//warning text
 				if(!$("#viewport .selectedBG").is(':visible')){
@@ -186,7 +192,7 @@ var BoothBuilder = {
 				selectedPropImgs.toArray().forEach(function(img, idx){
 					img = $(img);
 					$('<img />', {
-					    src: img.attr("src"),
+					    src: img.data("big"),
 					    title: img.attr("title"),
 					    index: idx
 					}).data("index", idx).appendTo( $("#viewport .selectedProps") );
@@ -243,4 +249,16 @@ var BoothBuilder = {
 document.addEventListener("DOMContentLoaded", function() {
 	window.$ = jQuery;
 	BoothBuilder.init();
+	//lazyload big imgs
+
+	$.each($("#bgSelect img, #fgSelect img, #propSelect img"), function(idx, elem){
+	  	var curImg = new Image();
+
+	    curImg.src = $(elem).src;
+	    curImg.onload = function(){
+	        // do whatever here, add it to the background, append the image ect.
+	        //console.log(this);  
+	    }
+	})
+
 });
