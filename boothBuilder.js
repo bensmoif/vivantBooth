@@ -135,14 +135,14 @@ var BoothBuilder = {
 			if($(this).hasClass("selected")){
 				$(this).siblings().removeClass("selected");
 				$(this).parent().addClass("selectComplete");
-				$(this).parent().parent().find("[aria-controls='bgSelect']").find(".header-label").text( $(this).attr("title") );
+				$(this).parent().parent().find("[aria-controls='bgSelect'] .headerTitle").text( $(this).attr("title") );
 				$("#viewport .selectedBG").css('background-image', 'url("' + $(this).data("big") + '")').fadeIn();
 
 				//BoothBuilder.openNextAccordion();
 			}else{
 				//unselect
 				$(this).parent().removeClass("selectComplete");
-				$(this).parent().parent().find("[aria-controls='bgSelect']").find(".header-label").text("Pick One!");
+				$(this).parent().parent().find("[aria-controls='bgSelect']").text("Choose a Backdrop");
 				//animate this
 				//$("#viewport .selectedBG").fadeOut();
 				$("#viewport .selectedBG").fadeOut();
@@ -156,7 +156,7 @@ var BoothBuilder = {
 				//set label
 				$(this).siblings().removeClass("selected");
 				$(this).parent().addClass("selectComplete");
-				$(this).parent().parent().find("[aria-controls='fgSelect']").find(".header-label").text( $(this).attr("title") );
+				$(this).parent().parent().find("[aria-controls='fgSelect'] .headerTitle").find(".header-label").text( $(this).attr("title") );
 				$("#viewport .selectedFG").css("backgroundImage", "url("+$(this).data("big")+")" ).fadeIn();
 
 				//warning text
@@ -171,7 +171,7 @@ var BoothBuilder = {
 			}else{
 				//unselect
 				$(this).parent().removeClass("selectComplete");
-				$(this).parent().parent().find("[aria-controls='fgSelect']").find(".header-label").text("Pick Any!");
+				$(this).parent().parent().find("[aria-controls='fgSelect'] .headerTitle").text("Add a Foreground (optional)");
 				//animate this
 				$("#viewport .selectedFG").fadeOut();
 
@@ -254,7 +254,10 @@ document.addEventListener("DOMContentLoaded", function() {
 	$.each($("#bgSelect img, #fgSelect img, #propSelect img"), function(idx, elem){
 	  	var curImg = new Image();
 
-	    curImg.src = $(elem).src;
+	    curImg.src = $(elem).data("big");
+	    //throw them in hidden div
+	    $(curImg).appendTo(".imagedata");
+
 	    curImg.onload = function(){
 	        // do whatever here, add it to the background, append the image ect.
 	        //console.log(this);  

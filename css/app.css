@@ -1,9 +1,10 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway:400,700|Roboto:400,700|Pacifico");
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,700|Roboto:400,700|Pacifico|Arvo:700");
 body {
   background: white;
   padding: 1em;
   font-family: 'Pacifico';
   font-family: 'Roboto', sans-serif;
+  font-family: 'Arvo', serif;
   font-family: 'Raleway', sans-serif; }
 
 .imageList {
@@ -43,7 +44,7 @@ body {
       position: relative; }
   .boothBuilder .appRow {
     display: flex;
-    overflow: hidden;
+    overflow: visible;
     border-radius: 1em;
     height: 100%; }
     @media (max-width: 990px) {
@@ -119,7 +120,7 @@ body {
         height: 100%;
         z-index: 10;
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         justify-content: space-evenly;
         flex-wrap: wrap; }
         .boothBuilder .appRow #viewport .selectedProps img {
@@ -134,17 +135,46 @@ body {
           height: 60%; } }
       .boothBuilder .appRow #selectAccordion h3.ui-accordion-header {
         letter-spacing: 2px;
-        background: #97c9e4;
-        color: white;
+        background: #d8e8f1;
+        color: #97c9e4;
         padding: 1em .5em;
         text-transform: uppercase;
-        font-weight: bold;
-        font-style: italic;
-        border-top: 1px solid #8499a5; }
-        .boothBuilder .appRow #selectAccordion h3.ui-accordion-header .header-label {
-          text-transform: capitalize;
-          font-weight: normal;
-          letter-spacing: 1px; }
+        font-family: 'Arvo', serif;
+        transition: all .3s ease-in;
+        position: relative;
+        z-index: 5;
+        outline: 0; }
+        .boothBuilder .appRow #selectAccordion h3.ui-accordion-header .headerTitle {
+          position: absolute;
+          z-index: 2;
+          top: .5em;
+          left: 3em; }
+        .boothBuilder .appRow #selectAccordion h3.ui-accordion-header .numberCircle {
+          position: absolute;
+          left: -.2em;
+          top: -.215em;
+          transform: scale(0.6) translateX(0.1em);
+          text-align: center;
+          line-height: 1em;
+          font-size: 2.5em;
+          width: 1.2em;
+          height: 1.2em;
+          border-radius: 50%;
+          color: white;
+          z-index: 1;
+          font-family: 'Pacifico';
+          opacity: .333;
+          border: 0px solid white;
+          background: red;
+          transition: all .3s ease-in; }
+        .boothBuilder .appRow #selectAccordion h3.ui-accordion-header-active, .boothBuilder .appRow #selectAccordion h3.ui-accordion-header:hover {
+          background: white; }
+          .boothBuilder .appRow #selectAccordion h3.ui-accordion-header-active .headerTitle, .boothBuilder .appRow #selectAccordion h3.ui-accordion-header:hover .headerTitle {
+            color: #a5a219; }
+        .boothBuilder .appRow #selectAccordion h3.ui-accordion-header-active .numberCircle {
+          opacity: 1;
+          transform: scale(1);
+          border: 2px solid white; }
       .boothBuilder .appRow #selectAccordion .ui-accordion-content {
         padding: 0;
         height: calc(100% - 10.2em);
