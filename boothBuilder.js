@@ -142,7 +142,7 @@ var BoothBuilder = {
 			}else{
 				//unselect
 				$(this).parent().removeClass("selectComplete");
-				$(this).parent().parent().find("[aria-controls='bgSelect']").text("Choose a Backdrop");
+				$(this).parent().parent().find("[aria-controls='bgSelect'] .headerTitle").text("Choose a Backdrop");
 				//animate this
 				//$("#viewport .selectedBG").fadeOut();
 				$("#viewport .selectedBG").fadeOut();
@@ -187,15 +187,29 @@ var BoothBuilder = {
 			selectedPropImgs = $(this).parent().find("img.selected");
 
 			$("#viewport .selectedProps").empty();
+			/*
+			var oldest;
+			jQuery.each($("#viewport .selectedProps img"), function(idx, elem){
+				if($(elem).data("addedOn") > oldest.data("addedOn")){
+					//detach addedOn
+				}
+			});
+			*/
+
+			$("#viewport .selectedProps")
 			if(selectedPropImgs){
 
 				selectedPropImgs.toArray().forEach(function(img, idx){
 					img = $(img);
-					$('<img />', {
+
+
+					var nImg = $('<img />', {
 					    src: img.data("big"),
 					    title: img.attr("title"),
 					    index: idx
-					}).data("index", idx).appendTo( $("#viewport .selectedProps") );
+					}).data("index", idx).data("addedOn", Date.now()).hide();
+					nImg.appendTo( $("#viewport .selectedProps") );
+					$("#viewport .selectedProps img").fadeIn();
 				});
 				if(selectedPropImgs.length>=10){
 					$(this).parent().addClass("selectComplete");

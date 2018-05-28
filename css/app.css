@@ -67,7 +67,8 @@ body {
       .boothBuilder .appRow #viewport #introText {
         height: 100%;
         display: flex;
-        flex-direction: column; }
+        flex-direction: column;
+        justify-content: space-around; }
         @media (max-width: 990px) {
           .boothBuilder .appRow #viewport #introText {
             padding: 1em 0; }
@@ -120,15 +121,14 @@ body {
         height: 100%;
         z-index: 10;
         display: flex;
-        align-items: flex-end;
-        justify-content: space-evenly;
-        flex-wrap: wrap; }
+        align-items: flex-end; }
         .boothBuilder .appRow #viewport .selectedProps img {
-          width: 22%; }
+          height: 95%;
+          bottom: 0; }
     .boothBuilder .appRow #selectAccordion {
       width: 33%;
       background: #97c9e4;
-      border-left: 2px solid #97c9e4; }
+      border-left: 1px solid #97c9e4; }
       @media (max-width: 990px) {
         .boothBuilder .appRow #selectAccordion {
           width: 100%;
@@ -137,6 +137,7 @@ body {
         letter-spacing: 2px;
         background: #d8e8f1;
         color: #97c9e4;
+        border-right: 1px solid #97c9e4;
         padding: 1em .5em;
         text-transform: uppercase;
         font-family: 'Arvo', serif;
@@ -171,10 +172,13 @@ body {
           background: white; }
           .boothBuilder .appRow #selectAccordion h3.ui-accordion-header-active .headerTitle, .boothBuilder .appRow #selectAccordion h3.ui-accordion-header:hover .headerTitle {
             color: #a5a219; }
-        .boothBuilder .appRow #selectAccordion h3.ui-accordion-header-active .numberCircle {
-          opacity: 1;
-          transform: scale(1);
-          border: 2px solid white; }
+        .boothBuilder .appRow #selectAccordion h3.ui-accordion-header-active {
+          box-shadow: 0px -5px 23px -2px #e7a61a; }
+          .boothBuilder .appRow #selectAccordion h3.ui-accordion-header-active .numberCircle {
+            opacity: 1;
+            transform: scale(1);
+            border: 2px solid white;
+            box-shadow: -4px -7px 27px -4px #e7a61a; }
       .boothBuilder .appRow #selectAccordion .ui-accordion-content {
         padding: 0;
         height: calc(100% - 10.2em);
