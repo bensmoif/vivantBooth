@@ -5,96 +5,232 @@
 		<link href="css/jquery-ui.css" rel="stylesheet">
 		<link href="css/app.css" rel="stylesheet">
 	</head>
-	<body>
+  <body>
 
 
 <div class="boothBuilder">
 
-	<h1><img src="images/vivantLogo.png" class="logo" />Booth Builder</h1>
 	<div class="appRow">
 		<div id="viewport">
+
+      <h1><!--watermark--></h1>
 			<div id="introText">
-				<p>
-					What will your booth look like? Start playing!
-				</p>
-				<p style="text-align: right;">
-					Pick a background! ⇨
-				</p>
-				<p>
-					<i>Let's build your booth!</i>
-				</p>
+				
 			</div>
 			<div id="pleaseSelectText">
-				<p>Don't forget to select a Background too!</p>
+				<p>Forgetting something? Don't forget the backdrop!</p>
 			</div>
 
 			<div class="selectedBG"></div>
 			<div class="selectedFG"></div>
 			<div class="selectedProps">
-
 			</div>
 		</div>
 		<div id="selectAccordion" class="ui-accordion ui-widget" role="tablist">
-			<h3 class="ui-accordion-header"><span class="numberCircle">1</span> <span class="headerTitle">Choose a Backdrop</span></h3>
+			<h3 class="ui-accordion-header"><span class="numberCircle">1</span> <span class="headerTitle">Backdrop: Choose 1</span></h3>
 			<div class="ui-accordion-content" id="bgSelect" data-max-select-count="1">
 
 			</div>
-			<h3 class="ui-accordion-header"><span class="numberCircle">2</span> <span class="headerTitle">Add a Foreground (optional)</span></h3>
+			<h3 class="ui-accordion-header"><span class="numberCircle">2</span> <span class="headerTitle">Foreground: Optional</span></h3>
 			<div class="ui-accordion-content" id="fgSelect" data-max-select-count="1">
 
 			</div>
-			<h3 class="ui-accordion-header"><span class="numberCircle">3</span> <span class="headerTitle">Pick some Props</span></h3>
+			<h3 class="ui-accordion-header"><span class="numberCircle">3</span> <span class="headerTitle">Props: Pick your top 3</span></h3>
 			<div class="ui-accordion-content" id="propSelect" data-max-select-count="10">
-
 			</div>
+
+      <div class="buttons">
+        <a id="saveBtn" href="#"></a>
+      </div>
 		</div>
 	</div>
 
 </div>
 
 <div class="imagedata" style="opacity: 0;">
-	<ul class="wpb_image_grid_ul imageList" id="backgroundImages" >
-	 <li class="isotope-item"><a class="prettyphoto" href="./backdrops/A-Trip-to-the-Moon-300x225.jpg" data-title="A Trip to the Moon" data-big="./backdrops/BG-ATripToTheMoon-Big.jpg" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./backdrops/Beer-Cross-Stitch-100-300x225.jpg" data-title="Beer Cross-Stitch" data-big="./backdrops/BG-BeerCrossStitch-Big.jpg" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./backdrops/Big-Sky-300x225.jpg" data-title="Big Sky" data-big="./backdrops/BG-BigSky-Big.jpg" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./backdrops/Bosch-Monster-300x225.jpg" data-title="Bosch Monsters" data-big="./backdrops/BG-Bosch-Big.jpg" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./backdrops/Boxwood-300x225.jpg" data-title="Boxwood Leaves" data-big="./backdrops/BG-Boxwood-Big.jpg" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./backdrops/BWGoldStripes-100-300x225.jpg" data-title="B&W Gold Stripes" data-big="./backdrops/BG-BWGoldStripes-Big.jpg" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./backdrops/Dark-and-Stormy-300x225.jpg" data-title="Dark & Stormy" data-big="./backdrops/BG-DarkAndStormy-Big.jpg" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./backdrops/Fox-Geo-300x225.jpg"  data-title="Fox-Geo" data-big="./backdrops/BG-FoxGeo-Big.jpg" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./backdrops/Monte-Carlo-300x225.jpg" data-title="Monte Carlo" data-big="./backdrops/BG-MonteCarlo-Big.jpg" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./backdrops/Pop-Geo-300x225.jpg" data-title="Pop-Geo" data-big="./backdrops/BG-PopGeo-Big.jpg" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./backdrops/Purple-Drips-300x225.jpg" data-title="Purple Drips" data-big="./backdrops/BG-PurpleDrips-Big.jpg" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./backdrops/Rad-Plaid-300x225.jpg" data-title="Rad Plaid" data-big="./backdrops/BG-RadPlaid-Big.jpg" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./backdrops/Robot-Vs.-Sea-Monster-300x225.jpg" data-title="Robot v Monster" data-big="./backdrops/BG-RobotVsSea-Big.jpg" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./backdrops/Schlafly-Barrels-300x225.jpg" data-title="Schlafly Barrels" data-big="./backdrops/BG-SchlaflyBarrels-Big.jpg" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./backdrops/Snowy-Mountain-300x225.jpg" data-title="Snowy Mountain" data-big="./backdrops/BG-SnowyMountains-Big.jpg" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./backdrops/Sparkle-Sky-300x225.jpg" data-title="Sparkle Sky" data-big="./backdrops/BG-SparkleSky-Big.jpg" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./backdrops/Spirograph-300x225.jpg" data-title="Spirograph" data-big="./backdrops/BG-Spyrograph-Big.jpg" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./backdrops/St-Louis-Skyline-300x225.jpg" data-title="St. Louis Skyline" data-big="./backdrops/BG-StLouisSkyline-Big.jpg" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./backdrops/Tower-Grove-Pond-300x225.jpg" data-title="Tower Grove Pond" data-big="./backdrops/BG-TowerGrovePond-Big.jpg" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./backdrops/Tropical-300x225.jpg" data-title="Tropical" data-big="./backdrops/BG-Tropical-Big.jpg" > </a></li>
+	<ul id="backgroundImages" >
+	 <li><a href="./backdrops/BG-ATripToTheMoon.jpg" data-title="A Trip to the Moon" > </a></li>
+   <li><a href="./backdrops/BG-Balloons.jpg" data-title="Hotair Balloons" > </a></li>
+   <li><a href="./backdrops/BG-BeerCrossStitch.jpg" data-title="Beer Cross-Stitch" > </a></li>
+   <li><a href="./backdrops/BG-BigSky.jpg" data-title="Big Sky" > </a></li>
+   <li><a href="./backdrops/BG-BigTop.jpg" data-title="Big Top" > </a></li>
+   <li><a href="./backdrops/BG-Biggggggertop.jpg" data-title="Bigger Top" > </a></li>
+	 <li><a href="./backdrops/BG-Bosch.jpg" data-title="Bosch Monsters" > </a></li>
+   <li><a href="./backdrops/BG-Boxwood.jpg" data-title="Boxwood Leaves" > </a></li>
+   <li><a href="./backdrops/BG-BurgersBeer.jpg" data-title="Burgers n Beers" > </a></li>
+   <li><a href="./backdrops/BG-BWGoldStripes.jpg" data-title="B&W Gold Stripes" > </a></li>
+   <li><a href="./backdrops/BG-Cables.jpg" data-title="Cables" > </a></li>
+	 <li><a href="./backdrops/BG-DarkAndStormy.jpg" data-title="Dark & Stormy" > </a></li>
+	 <li><a href="./backdrops/BG-FoxGeo.jpg"  data-title="Fox-Geo" > </a></li>
+   <li><a href="./backdrops/BG-GoofyGallery.jpg" data-title="Goofy Gallery" > </a></li>
+	 <li><a href="./backdrops/BG-MonteCarlo.jpg" data-title="Monte Carlo" > </a></li>
+   <li><a href="./backdrops/BG-MoonBeams.jpg" data-title="Moon Beams" > </a></li>
+	 <li><a href="./backdrops/BG-PopGeo.jpg" data-title="Pop-Geo" > </a></li>
+   <li><a href="./backdrops/BG-PoppyPeonies.jpg" data-title="Poppy Peonies" > </a></li>
+   <li><a href="./backdrops/BG-PurpleDrips.jpg" data-title="Purple Drips" > </a></li>
+	 <li><a href="./backdrops/BG-RadPlaid.jpg" data-title="Rad Plaid" > </a></li>
+   <li><a href="./backdrops/BG-RobotVsSea.jpg" data-title="Robot v Monster" > </a></li>
+   <li><a href="./backdrops/BG-RoosterPark.jpg" data-title="Rooster Park" > </a></li>
+	 <li><a href="./backdrops/BG-SchlaflyBarrels.jpg" data-title="Schlafly Barrels" > </a></li>
+   <li><a href="./backdrops/BG-SchoolDays.jpg" data-title="School Days" > </a></li>
+   <li><a href="./backdrops/BG-SnowTrees.jpg" data-title="Snow Trees" > </a></li>
+   <li><a href="./backdrops/BG-SnowyMountains.jpg" data-title="Snowy Mountain" > </a></li>
+	 <li><a href="./backdrops/BG-SparkleSky.jpg" data-title="Sparkle Sky" > </a></li>
+   <li><a href="./backdrops/BG-SpiderWeb.jpg" data-title="Spider Web" > </a></li>
+   <li><a href="./backdrops/BG-Spyrograph.jpg" data-title="Spyrograph" > </a></li>
+   <li><a href="./backdrops/BG-StairwayToHeaven.jpg" data-title="Stairway to Heaven"> </a></li>
+   <li><a href="./backdrops/BG-StLouisSkyline.jpg" data-title="St. Louis Skyline" > </a></li>
+	 <li><a href="./backdrops/BG-TowerGrovePond.jpg" data-title="Tower Grove Pond" > </a></li>
+   <li><a href="./backdrops/BG-Tropical.jpg" data-title="Tropical" > </a></li>
+   <li><a href="./backdrops/BG-Venice.jpg" data-title="Venice Canals" > </a></li>
 	</ul>
 
-	<ul class="wpb_image_grid_ul imageList" id="foregroundImages">
-	 <li class="isotope-item"><a class="prettyphoto" href="./foregrounds/Barrel-of-Fun.png" data-title="Barrel of Fun" data-big="./foregrounds/FG-BarrelOfFun-Big.png" data-prop-pos="20|40|60" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./foregrounds/Caboose.png" data-title="Caboose" data-big="./foregrounds/FG-Caboose-Big.png" data-prop-pos="20|40|60" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./foregrounds/Earthbound-Hop-Tub.png" data-title="Earthbound Hot Tub" data-big="./foregrounds/FG-EarthboundHopTub-Big.png" data-prop-pos="20|40|60" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./foregrounds/Hot-Air-Balloon-Basket.png" data-title="Hot Air Balloon Basket" data-big="./foregrounds/FG-HotAirBalloon-Big.png" data-prop-pos="20|40|60" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./foregrounds/Octopus.png" data-title="Octopus" data-big="./foregrounds/FG-Octopus-Big.png" data-prop-pos="20|40|60" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./foregrounds/Parting-Clouds1.png" data-title="Parting Clouds" data-big="./foregrounds/FG-PartingClouds-Big.png" data-prop-pos="20|40|60" > </a></li>
+	<ul id="foregroundImages">
+     <li><a href="./foregrounds/FG-BarrelOfFun-Big.png" data-title="Barrel of Fun" data-big="./foregrounds/FG-BarrelOfFun-Big.png" > </a></li>
+     <li><a href="./foregrounds/FB-Boat-Big.png" data-title="Barrel of Fun" data-big="./foregrounds/FB-Boat-Big.png" > </a></li>
+     <li><a href="./foregrounds/FG-Caboose-Big.png" data-title="Caboose" data-big="./foregrounds/FG-Caboose-Big.png" > </a></li>
+     <li><a href="./foregrounds/FG-Clouds-Big.png" data-title="Clouds" data-big="./foregrounds/FG-Clouds-Big.png" > </a></li>
+	 <li><a href="./foregrounds/FG-EarthboundHopTub-Big.png" data-title="Earthbound Hot Tub" data-big="./foregrounds/FG-EarthboundHopTub-Big.png" > </a></li>
+     <li><a href="./foregrounds/FG-FaceYourFears-Big.png" data-title="Face Your Fears" data-big="./foregrounds/FG-FaceYourFears-Big.png" > </a></li>
+     <li><a href="./foregrounds/FG-Gondola-Big.png" data-title="Gondola" data-big="./foregrounds/FG-Gondola-Big.png" > </a></li>
+     <li><a href="./foregrounds/FG-Honeycombs-Big.png" data-title="Honeycombs" data-big="./foregrounds/FG-Honeycombs-Big.png" > </a></li>
+     <li><a href="./foregrounds/FG-HotAirBalloon-Big.png" data-title="Hot Air Balloon Basket" data-big="./foregrounds/FG-HotAirBalloon-Big.png" > </a></li>
+     <li><a href="./foregrounds/FG-IceCaves-Big.png" data-title="Ice Caves" data-big="./foregrounds/FG-IceCaves-Big.png" > </a></li>
+
+     <li><a href="./foregrounds/FG-Octopus-Big.png" data-title="Octopus" data-big="./foregrounds/FG-Octopus-Big.png" > </a></li>
+
+     <li><a href="./foregrounds/FG-PartingClouds-Big.png" data-title="Parting Clouds" data-big="./foregrounds/FG-PartingClouds-Big.png" > </a></li>
+     <li><a href="./foregrounds/FG-PinkFlowers-Big.png" data-title="Pink Flowers" data-big="./foregrounds/FG-PinkFlowers-Big.png" > </a></li>
+     <li><a href="./foregrounds/FG-PonyRide-Big.png" data-title="Pony Ride" data-big="./foregrounds/FG-PonyRide-Big.png" > </a></li>
+     <li><a href="./foregrounds/FG-Tenticle-Big.png" data-title="Tenticle" data-big="./foregrounds/FG-Tenticle-Big.png" > </a></li>
+     <li><a href="./foregrounds/FG-TreeLine-Big.png" data-title="Tree Line" data-big="./foregrounds/FG-TreeLine-Big.png" > </a></li>
+     <li><a href="./foregrounds/FG-VaudevilleClouds-Big.png" data-title="Vaudeville Clouds" data-big="./foregrounds/FG-VaudevilleClouds-Big.png" > </a></li>
 	</ul>
 
-	<ul class="wpb_image_grid_ul imageList" id="propImages" >
-	 <li class="isotope-item"><a class="prettyphoto" href="./props/Pink-Popsicle.png" data-title="Popsicle" data-big="./props/Prop-Popsicle-Big.png" > </a></li>
-	 <li class="isotope-item"><a class="prettyphoto" href="./props/Watermelon.png" data-title="Watermelon" data-big="./props/Prop-Watermelon-Big.png" > </a></li>
+	<ul id="propImages" >
+       <li><a href="./props/Prop-09Numbers.png" data-title="Popsicle" > </a></li>
+       <li><a href="./props/Prop-Anchor.png" data-title="Anchor" > </a></li>
+       <li><a href="./props/Prop-Awesomesauce.png" data-title="Awesomesauce" > </a></li>
+       <li><a href="./props/Prop-BalloonDrSeuss.png" data-title="Balloon - Dr. Seuss" > </a></li>
+       <li><a href="./props/Prop-BandAid.png" data-title="Band Aid" > </a></li>
+       <li><a href="./props/Prop-BeachBall.png" data-title="Beach Ball" > </a></li>
+       <li><a href="./props/Prop-Beaker.png" data-title="Beaker" > </a></li>
+       <li><a href="./props/Prop-BeerLoneStar.png" data-title="Beer - Lone Star" > </a></li>
+       <li><a href="./props/Prop-BeerSteins.png" data-title="Beer Steins" > </a></li>
+       <li><a href="./props/Prop-Bell.png" data-title="Bell" > </a></li>
+       <li><a href="./props/Prop-BirdDrSeuss.png" data-title="Bird Dr. Seuss" > </a></li>
+       <li><a href="./props/Prop-BirdGeo.png" data-title="Bird Geo" > </a></li>
+       <li><a href="./props/Prop-BirdSeagull.png" data-title="Seagull" > </a></li>
+       <li><a href="./props/Prop-BoomBox.png" data-title="Boombox" > </a></li>
+       <li><a href="./props/Prop-BoschMonster.png" data-title="Bosch Monster" > </a></li>
+       <li><a href="./props/Prop-BowLarge.png" data-title="Big Bow" > </a></li>
+       <li><a href="./props/Prop-BowlingPins.png" data-title="Bowling Pins" > </a></li>
+       <li><a href="./props/Prop-BowSmall.png" data-title="Small Bow" > </a></li>
+       <li><a href="./props/Prop-Broom.png" data-title="Broom" > </a></li>
+       <li><a href="./props/Prop-Cactus.png" data-title="Cactus" > </a></li>
+       <li><a href="./props/Prop-CakeWedding.png" data-title="Wedding Cake" > </a></li>
+       <li><a href="./props/Prop-CameraBlue.png" data-title="Camera - Blue" > </a></li>
+       <li><a href="./props/Prop-CameraVintage.png" data-title="Camera - Vintage" > </a></li>
+       <li><a href="./props/Prop-CatBW.png" data-title="Cat - B&W" > </a></li>
+       <li><a href="./props/Prop-CatOrange.png" data-title="Cat - Orange" > </a></li>
+       <li><a href="./props/Prop-Chalkboard-SpeechBubble.png" data-title="Speech Bubble" > </a></li>
+       <li><a href="./props/Prop-Chalkboard-SpeechSquare.png" data-title="Square Speech" > </a></li>
+       <li><a href="./props/Prop-ChalkboardHashtag.png" data-title="Hashtag Board" > </a></li>
+       <li><a href="./props/Prop-ChalkboardHeart.png" data-title="Chalkboard Heart" > </a></li>
+       <li><a href="./props/Prop-ChampagneBottle.png" data-title="Champaign Bottle" > </a></li>
+       <li><a href="./props/Prop-ChampagneFlutes.png" data-title="Champagn Flutes" > </a></li>
+       <li><a href="./props/Prop-Cheers.png" data-title="Cheers" > </a></li>
+       <li><a href="./props/Prop-ChocolateBar.png" data-title="Chocolate Bar" > </a></li>
+       <li><a href="./props/Prop-DERP.png" data-title="Derp" > </a></li>
+       <li><a href="./props/Prop-DevilHeel.png" data-title="Devil Heel" > </a></li>
+       <li><a href="./props/Prop-DiamondNecklace.png" data-title="Diamond Necklace" > </a></li>
+       <li><a href="./props/Prop-DiamondRing.png" data-title="Diamond Ring" > </a></li>
+       <li><a href="./props/Prop-Donut.png" data-title="Donut" > </a></li>
+       <li><a href="./props/Prop-FishRed.png" data-title="Fish - Red" > </a></li>
+       <li><a href="./props/Prop-FishYellow.png" data-title="Fish - Yellow" > </a></li>
+       <li><a href="./props/Prop-FlagsMaroon.png" data-title="Flags Maroon" > </a></li>
+       <li><a href="./props/Prop-FlagsTriangle.png" data-title="Flags - Triangle" > </a></li>
+       <li><a href="./props/Prop-Flamingo.png" data-title="Flamingo" > </a></li>
+       <li><a href="./props/Prop-FlipPhone.png" data-title="Flipphone" > </a></li>
+       <li><a href="./props/Prop-FlowerCrown.png" data-title="Flower Crown" > </a></li>
+       <li><a href="./props/Prop-FlowerPinkCircle.png" data-title="Flower - Pink Cirlce" > </a></li>
+       <li><a href="./props/Prop-GlassesGroovy.png" data-title="Groovy Glasses" > </a></li>
+       <li><a href="./props/Prop-GlassesHarryPotterNerd.png" data-title="Harry Potter Glasses" > </a></li>
+       <li><a href="./props/Prop-GogglesAviator.png" data-title="Aviator Glasses" > </a></li>
+       <li><a href="./props/Prop-GuitarElectric.png" data-title="Electric Guitar" > </a></li>
+       <li><a href="./props/Prop-GunOuterspace.png" data-title="Space Gun" > </a></li>
+       <li><a href="./props/Prop-Hamburger.png" data-title="Hamburger" > </a></li>
+       <li><a href="./props/Prop-HatElf.png" data-title="Elf Hat" > </a></li>
+       <li><a href="./props/Prop-HatNurses.png" data-title="Nurse Hat" > </a></li>
+       <li><a href="./props/Prop-HatWinterBlue.png" data-title="Winter Blue" > </a></li>
+       <li><a href="./props/Prop-HoseNozzle.png" data-title="Hose Nozzle" > </a></li>
+       <li><a href="./props/Prop-HotDog.png" data-title="Hot Dog!" > </a></li>
+       <li><a href="./props/Prop-Iceburg.png" data-title="Iceburg" > </a></li>
+       <li><a href="./props/Prop-Keg.png" data-title="Keg" > </a></li>
+       <li><a href="./props/Prop-KissyEmoji.png" data-title="Kissy Emoji" > </a></li>
+       <li><a href="./props/Prop-Leis.png" data-title="Leis" > </a></li>
+       <li><a href="./props/Prop-LetsFlamingle.png" data-title="Lets Flamingle" > </a></li>
+       <li><a href="./props/Prop-LifePreserver.png" data-title="Life Preserver" > </a></li>
+       <li><a href="./props/Prop-Lightbulb.png" data-title="Lightbulb" > </a></li>
+       <li><a href="./props/Prop-Lips.png" data-title="Lips" > </a></li>
+       <li><a href="./props/Prop-Lolipops.png" data-title="Lollipops" > </a></li>
+       <li><a href="./props/Prop-MagazineRunway.png" data-title="Magazine - Runway" > </a></li>
+       <li><a href="./props/Prop-MagnifyingGlass.png" data-title="Magnifying Glass" > </a></li>
+       <li><a href="./props/Prop-MedalGold.png" data-title="Medal - Gold" > </a></li>
+       <li><a href="./props/Prop-MedalSilver.png" data-title="Medal - Silver" > </a></li>
+       <li><a href="./props/Prop-MicrophoneVintage.png" data-title="Microphone - Vintage" > </a></li>
+       <li><a href="./props/Prop-Milkshake.png" data-title="Milkshake" > </a></li>
+       <li><a href="./props/Prop-Mugs.png" data-title="Mugs" > </a></li>
+       <li><a href="./props/Prop-OneCent.png" data-title="One Cent" > </a></li>
+       <li><a href="./props/Prop-Otoscope.png" data-title="Otoscope" > </a></li>
+       <li><a href="./props/Prop-PaintBrush.png" data-title="Paintbrush" > </a></li>
+       <li><a href="./props/Prop-PaintPalette.png" data-title="Paint Palette" > </a></li>
+       <li><a href="./props/Prop-PalmLeaf.png" data-title="Palmleaf" > </a></li>
+       <li><a href="./props/Prop-PatientGowns.png" data-title="Patient Gown" > </a></li>
+       <li><a href="./props/Prop-PeasinaPod.png" data-title="Peas in a Pod" > </a></li>
+       <li><a href="./props/Prop-PizzaSlice.png" data-title="Pizza Slice" > </a></li>
+       <li><a href="./props/Prop-PointEmoji.png" data-title="Point Emoji" > </a></li>
+       <li><a href="./props/Prop-PoopEmoji.png" data-title="Poop Emoji" > </a></li>
+       <li><a href="./props/Prop-PopsiclePink.png" data-title="Popsicle Pink" > </a></li>
+       <li><a href="./props/Prop-PopsicleRocketBomb.png" data-title="Rocketbomb Pop" > </a></li>
+       <li><a href="./props/Prop-PumpkinJackoLantern.png" data-title="Jackolantern" > </a></li>
+       <li><a href="./props/Prop-RallyFinger.png" data-title="Rally Finger" > </a></li>
+       <li><a href="./props/Prop-Record.png" data-title="Record" > </a></li>
+       <li><a href="./props/Prop-RubberChicken.png" data-title="Rubberchicken" > </a></li>
+       <li><a href="./props/Prop-SaintLouisStatue.png" data-title="St Louis Statue" > </a></li>
+       <li><a href="./props/Prop-ScarfGryffindor.png" data-title="Scarf - Gryffindor" > </a></li>
+       <li><a href="./props/Prop-ScarfHufflepuff.png" data-title="Scarf - Hufflepuff" > </a></li>
+       <li><a href="./props/Prop-ScarfRavenclaw.png" data-title="Scarf - Ravenclaw" > </a></li>
+       <li><a href="./props/Prop-ScarfSlytherin.png" data-title="Scarf - Slytherin" > </a></li>
+       <li><a href="./props/Prop-SharkFin.png" data-title="Shark Fin" > </a></li>
+       <li><a href="./props/Prop-Skull.png" data-title="Skull" > </a></li>
+       <li><a href="./props/Prop-SmileyFaceGroovy.png" data-title="Smiley Groovey" > </a></li>
+       <li><a href="./props/Prop-SnakeRubber.png" data-title="Rubber Snake" > </a></li>
+       <li><a href="./props/Prop-Snowflakes.png" data-title="Snowflakes" > </a></li>
+       <li><a href="./props/Prop-Star.png" data-title="Star" > </a></li>
+       <li><a href="./props/Prop-StarsShooting.png" data-title="Stars Shooting" > </a></li>
+       <li><a href="./props/Prop-SteeringWheelBoat.png" data-title="Boat wheel" > </a></li>
+       <li><a href="./props/Prop-SteeringWheelMercedes.png" data-title="Mercedes Wheel" > </a></li>
+       <li><a href="./props/Prop-Stethoscope.png" data-title="Stethescope" > </a></li>
+       <li><a href="./props/Prop-Syringe.png" data-title="Syringe" > </a></li>
+       <li><a href="./props/Prop-ThisWay.png" data-title="This Way" > </a></li>
+       <li><a href="./props/Prop-TicketsCircus.png" data-title="Tickets" > </a></li>
+       <li><a href="./props/Prop-Titanic-Window.png" data-title="Titanic Window" > </a></li>
+       <li><a href="./props/Prop-Umbrella-Beach.png" data-title="Beach Umbrella" > </a></li>
+       <li><a href="./props/Prop-Umbrella-Green.png" data-title="Green Umbrella" > </a></li>
+       <li><a href="./props/Prop-Umbrella-White.png" data-title="White Umbrella" > </a></li>
+       <li><a href="./props/Prop-WandHarryPotter.png" data-title="Magic Wand" > </a></li>
+       <li><a href="./props/Prop-Watermelon.png" data-title="Watermelon" > </a></li>
+       <li><a href="./props/Prop-Whip.png" data-title="Whip" > </a></li>
+       <li><a href="./props/Prop-Wind.png" data-title="Wind" > </a></li>
+       <li><a href="./props/Prop-Wowza.png" data-title="Wowza" > </a></li>
+       <li><a href="./props/Prop-X-Ray.png" data-title="X-Ray" > </a></li>
 	</ul>
 </div>
 
-
-
 		<script src="js/jquery.js"></script>
-		<script src="js/jquery-ui.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/html2canvas.js"></script>
 		<script src="boothBuilder.js"></script>
 	</body>
 </html>
