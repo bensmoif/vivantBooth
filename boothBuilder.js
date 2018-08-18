@@ -245,24 +245,40 @@ var BoothBuilder = {
 			$(".BoothBuilder .appRow").append($imgDownloadCtr);
 
 			html2canvas(document.querySelector("#viewport")).then(canvas => {
-				Canvas2Image.saveAsPNG(canvas, 750, 500)
-				/*
-				var image = canvas.toDataURL("image/png");
-			    var anchor = document.createElement('a');
-			    anchor.setAttribute('download', 'myBooth-OhSoVivant.png');
-			    anchor.setAttribute('href', image);
-			    anchor.setAttribute('id','downloadBtn');
-			    $("body").append(anchor)
-			    $("#downloadBtn").click();
-			    */
-    			$(this).removeClass("working");
+				
+				$("#dialog-modal").html("<h1>Here's your Booth</h1>")
+				$("#dialog-modal").append("<a href='"+canvas.toDataURL('image/png')+"' download='OhSoVivantMyBooth.png'><h2>Click to download!</h2><img src='"+canvas.toDataURL()+"' /></a>");
+
+		        var dWidth = $(window).width() * 0.8;
+		        var dHeight = $(window).height() * 0.8;
+
+				$("#dialog-modal").dialog({
+					width: dWidth,
+					height: dHeight,
+					dialogClass: 'noTitleStuff',
+					modal: true,
+					resizable: false,
+        			draggable: false,
+					open: function(event, ui) {
+						//click-outside close
+						$('.ui-widget-overlay').bind('click', function()
+				        { 
+				            $("#dialog-modal").dialog('close'); 
+				        }); 
+					}
+				});
+
+			    $("a#saveBtn").href = canvas.toDataURL();
+    			$("a#saveBtn").download = 'OhSoVivant-MyBooth.png';
+
+    			$("a#saveBtn").removeClass("working");
 			});
 		});
 
 
 		$("a#shareBtn").on('click',function() {
 			var shareHtml = "",
-				shareUrl = window.location.href,
+				shareUrl = encodeURI(window.location.toString()),
 				el = $(this),
 				shareModalTitle = el.data("modal-title"),
 				shareModalDescription = el.data("modal-description"),
@@ -273,9 +289,9 @@ var BoothBuilder = {
 				shareLinkedInTitle = encodeURIComponent(el.data("linkedin-title")),
 				shareLinkedInSummary = encodeURIComponent(el.data("linkedin-summary")),
 				shareLinkedInSource = window.location.protocol + "//" + window.location.hostname,
-				shareEmailLabel = "Share with Oh So Vivant!",
+				shareEmailLabel = "Send in an Email!",
 				shareEmailSubject = el.data("email-subject");
-			
+				
 			shareHtml += '<div class="modal fade in text-center" style="top: 9vw;" id="modal-share" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">'+
 			'<div class="modal-dialog">'+
 				'<div class="modal-content">'+
@@ -300,7 +316,7 @@ var BoothBuilder = {
 								shareHtml += '<li><a href="https://www.linkedin.com/shareArticle?mini=true&url='+shareUrl+'&title='+shareLinkedInTitle+'&summary='+shareLinkedInSummary+'&source='+shareLinkedInSource+'" title="'+shareLinkedInLabel+'" target="_blank" class="btn btn-linkedin"><i class="icon-linkedin"></i> '+shareLinkedInLabel+'</a></li>';
 							}
 							if (shareEmailLabel != undefined) {
-								shareHtml += '<li><a href="mailto:?subject=My Oh So Vivant Booth!&body=Hi, I put together my own great Oh So Vivant PhotoBooth, check it out: '+shareUrl+'" title="'+shareEmailLabel+'" class="btn btn-email"><i class="icon-mail"></i> '+shareEmailLabel+'</a></li>';
+								shareHtml += '<li><a id="sendItLink" href="mailto:?subject=My Oh So Vivant Booth!&body=Hi, I put together my own great Oh So Vivant PhotoBooth, check it out: '+shareUrl+'" title="'+shareEmailLabel+'" class="btn btn-email"><i class="icon-mail"></i> '+shareEmailLabel+'</a></li>';
 							}
 			
 						'</ul>'+
