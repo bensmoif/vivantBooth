@@ -275,10 +275,15 @@ var BoothBuilder = {
 			});
 		});
 
+		$("a#submitBtn").on('click', function() {
+			var shareUrl = encodeURIComponent(window.location.href.toString());
+			//prep email with current url
+			window.location = $(this).attr("href")+" "+shareUrl;
+		});
 
 		$("a#shareBtn").on('click',function() {
 			var shareHtml = "",
-				shareUrl = encodeURI(window.location.toString()),
+				shareUrl = encodeURIComponent(window.location.toString()),
 				el = $(this),
 				shareModalTitle = el.data("modal-title"),
 				shareModalDescription = el.data("modal-description"),
@@ -291,7 +296,7 @@ var BoothBuilder = {
 				shareLinkedInSource = window.location.protocol + "//" + window.location.hostname,
 				shareEmailLabel = "Send in an Email!",
 				shareEmailSubject = el.data("email-subject");
-				
+
 			shareHtml += '<div class="modal fade in text-center" style="top: 9vw;" id="modal-share" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">'+
 			'<div class="modal-dialog">'+
 				'<div class="modal-content">'+
